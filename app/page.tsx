@@ -12,8 +12,9 @@ export default function Home() {
         <h1 className='text-4xl sm:text-5xl text-dark inline-block'>Новостройки <p className='text-accent font-medium inline-block'>в Великом Новгороде</p></h1>
         <Filter/>
       </div>
-      <div className='container-padding mb-30 mx-auto'>
-        <CardCompex />
+      <div className='container-padding grid mb-30 mx-auto gap-12'>
+        <CardCompex name={'ЖК Юннатов'} street={'ул. Псковская'} price={'От 5.7 млн'} imageUrl={'/main-card-complex-unnatov.png'}/>
+        <CardCompex name={'ЖК Раздолье'} street={'ул. Кочетова'} price={'От 5.4 млн'} imageUrl={'/main-card-compex-razdolje.png'}/>
       </div>
     </div>
   );

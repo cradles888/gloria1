@@ -9,6 +9,7 @@
     --color-dark: #463F35;
     --color-dark50: #9C968F;
     --color-dark40: #B5B2AE;
+    --color-dark25: #D0CFCC;
     --color-dark15: #E3E2E1;
 
     --color-twopart: #DEDCDC;
@@ -23,6 +24,7 @@
   --color-dark: var(--color-dark);
   --color-dark50: var(--color-dark50);
   --color-dark40: var(--color-dark40);
+  --color-dark25: var(--color-dark25);
   --color-dark15: var(--color-dark15);
   --color-twopart: var(--color-twopart);
 
@@ -79,3 +81,11 @@ body {
   }
 }
 
+.bg {
+  /* transition: backdrop-filter 0.01s; */
+  backdrop-filter: blur(16px) opacity(0);
+}
+
+.bg.show {
+  backdrop-filter: blur(16px) opacity(1);
+}
