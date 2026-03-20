@@ -61,7 +61,10 @@ const Header = () => {
                         <div className='flex flex-col gap-4 text-white'>
                             <div className='flex items-center justify-between'>
                                 <span className='font-medium'>+7(8162) 623-800</span>
-                                <img src="/pin_fill.svg" alt="pin-fill" />
+                                <div className='flex gap-1 items-center'>
+                                <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>
+                                    <p>Менделеева, 16</p>
+                                </div>
                             </div>
                         </div>
                     </div>

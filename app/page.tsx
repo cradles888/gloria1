@@ -1,6 +1,7 @@
 import CardWb from '@/components/card-wb'
 import Filter from '@/components/filter/page'
 import CardComplex from '@/components/ui/card-complex'
+import CardNews from '@/components/card-news'
 export default function Home() {
   return (
     <div className="min-h-screen">
@@ -14,33 +15,50 @@ export default function Home() {
       </div>
       <div className='container-padding grid mb-30 mx-auto gap-8'>
         <CardComplex name={'ЖК Юннатов'} street={'ул. Псковская'} price={'От 5.7 млн'} imageUrl={'/main-card-complex-unnatov.png'}/>
-
-
-
-
-        {/* <CardCompex name={'ЖК Раздолье'} street={'ул. Кочетова'} price={'От 5.4 млн'} imageUrl={'/main-card-compex-razdolje.png'}/> */}
-      <div className="absolute inset-0 rounded-4xl overflow-hidden">
-  <div className="h-30 overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-dark40/50 [&::-webkit-scrollbar-thumb:hover]:bg-dark40 [&::-webkit-scrollbar-track]:bg-transparent [scrollbar-width:thin] [scrollbar-color:#404040_transparent]">
-    <div className="bg-dark15 px-5 pt-8 pb-6 sm:px-8 sm:py-12">
-      {/* ваш контент */}
-      
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-        <p className='h-10 w-20 '>1</p>
-      
-      {/* кнопка внизу */}
-      <div className="sticky bottom-0 left-4 z-10">
-        {/* <Button text="Перейти на страницу ЖК" size="md" variant="accent" /> */}
+        <CardComplex name={'ЖК Раздолье'} street={'ул. Кочетова'} price={'От 5.4 млн'} imageUrl={'/main-card-compex-razdolje.png'}/>
       </div>
-    </div>
-  </div>
-</div>
+      <div className='container-padding mb-30 mx-auto grid gap-8'>
+        <h2 className='text-dark text-[40px]'>Новости</h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-6'>
+          <CardNews 
+          title={'Оправдана ли нелюбовь к квартирам на последнем этаже?'} 
+          desc={'Инжинер ООО Глория развеял миф про последние этажи, почему стоит забыть про ... '}
+          image={'/images/news/news1.png'}
+          alt={'нелюбовь_к_первым_этажам'}
+          isLike={true}
+          date={'20 марта 2026'}
 
-      </div>
+          />
+                    <CardNews 
+          title={'Оправдана ли нелюбовь к квартирам на последнем этаже?'} 
+          desc={'Инжинер ООО Глория развеял миф про последние этажи, почему стоит забыть про ... '}
+          image={'/images/news/news1.png'}
+          alt={'нелюбовь_к_первым_этажам'}
+          isLike={true}
+          date={'20 марта 2026'}
+
+          />
+                    <CardNews 
+          title={'Оправдана ли нелюбовь к квартирам на последнем этаже?'} 
+          desc={'Инжинер ООО Глория развеял миф про последние этажи, почему стоит забыть про ... '}
+          image={'/images/news/news1.png'}
+          alt={'нелюбовь_к_первым_этажам'}
+          isLike={true}
+          date={'20 марта 2026'}
+
+          />
+                    <CardNews 
+          title={'Оправдана ли нелюбовь к квартирам на последнем этаже?'} 
+          desc={'Инжинер ООО Глория развеял миф про последние этажи, почему стоит забыть про ... '}
+          image={'/images/news/news1.png'}
+          alt={'нелюбовь_к_первым_этажам'}
+          isLike={true}
+          date={'20 марта 2026'}
+
+          />
+          </div>
+        
+          </div>
     </div>
   );
 }

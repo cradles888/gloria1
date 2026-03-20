@@ -159,7 +159,7 @@ const ResidentialComplex = ({ name, street, price, imageUrl }) => {
           </div>
 
           {/* BACK - MOBILE ONLY */}
-          <div className="absolute inset-0 flex flex-col overflow-hidden rounded-4xl bg-dark15 lg:hidden [transform:rotateY(180deg)] [backface-visibility:hidden] after:bg-gradient-to-t after:via-dark/0 after:from-dark/40 after:to-transparent after:h-40 after:absolute after:bottom-0 after:w-full ">
+          <div className="absolute inset-0 flex flex-col overflow-hidden rounded-4xl bg-dark15 lg:hidden [transform:rotateY(180deg)] [backface-visibility:hidden]">
             <div className="relative z-10 w-full flex-1 overflow-y-auto px-5 pt-8 pb-6 sm:px-8 sm:py-12">
               <p className="mb-6 text-start text-xl font-medium text-dark sm:mb-8 sm:text-2xl">
                 Квартиры в {name}
@@ -217,7 +217,7 @@ const ResidentialComplex = ({ name, street, price, imageUrl }) => {
                   </div>
                 </div>
               </div>
-                              <div className="z-10 bottom-0 left-4 block sticky">
+              <div className="z-10 bottom-5 left-14 flex justify-center">
                   <Button text="Перейти на страницу ЖК" size={'md'} variant={'accent'}/>
                 </div>
             </div>
