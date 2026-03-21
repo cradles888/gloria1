@@ -34,7 +34,7 @@ const filter = () => {
                     <ButtonParam text={'3'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <ButtonParam text={'4+'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <Range />
-                    <Button text='Фильтр' size={'sm'} variant={'outline'} className='content-center' />
+                    <Button text='Фильтр' size={'sm_2xl'} variant={'outline'} className='content-center ' />
                 </div>
                 <div className='hidden lg:block'>
                     <Button text='Показать предложения' size={'md'} variant={'accent'} className='content-center' />

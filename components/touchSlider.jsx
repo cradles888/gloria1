@@ -9,9 +9,11 @@ const TouchSlider = ({ children }) => {
   const [cardsToShow, setCardsToShow] = useState(3);
   
   const startX = useRef(0);
+  const startY = useRef(0);
   const startOffset = useRef(0);
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
+  const isHorizontalScroll = useRef(false);
   
   const totalSlides = children.length;
   
@@ -57,13 +59,11 @@ const TouchSlider = ({ children }) => {
   const isAtStart = currentIndex === 0;
   const isAtEnd = currentIndex === maxIndex;
   
-  // Новая функция для расчета правильного смещения в конце
+  // Функция для расчета правильного смещения в конце
   const getBaseTranslate = () => {
     if (isAtEnd && maxIndex > 0) {
-      // В конце: последняя карточка прижимается к правому краю
       return -maxOffset;
     }
-    // Обычный режим
     return -currentIndex * cardWidth;
   };
   
@@ -82,8 +82,12 @@ const TouchSlider = ({ children }) => {
   const handleDragStart = (e) => {
     setIsDragging(true);
     const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+    const clientY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
+    
     startX.current = clientX;
+    startY.current = clientY;
     startOffset.current = dragOffset;
+    isHorizontalScroll.current = false;
     
     if (sliderRef.current) {
       sliderRef.current.style.cursor = 'grabbing';
@@ -94,42 +98,61 @@ const TouchSlider = ({ children }) => {
   const handleDragMove = (e) => {
     if (!isDragging) return;
     
-    e.preventDefault();
     const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-    const deltaX = clientX - startX.current;
+    const clientY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
     
-    let newOffset = startOffset.current + deltaX;
-    newOffset = calculateConstrainedOffset(newOffset);
+    const deltaX = Math.abs(clientX - startX.current);
+    const deltaY = Math.abs(clientY - startY.current);
     
-    setDragOffset(newOffset);
+    // Определяем направление скролла (горизонтальный или вертикальный)
+    if (!isHorizontalScroll.current && (deltaX > 5 || deltaY > 5)) {
+      isHorizontalScroll.current = deltaX > deltaY;
+    }
+    
+    // Если это горизонтальный свайп - предотвращаем скролл страницы
+    if (isHorizontalScroll.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      let newOffset = startOffset.current + (clientX - startX.current);
+      newOffset = calculateConstrainedOffset(newOffset);
+      
+      setDragOffset(newOffset);
+    }
   };
   
   // Завершение
-  const handleDragEnd = () => {
+  const handleDragEnd = (e) => {
     if (!isDragging) return;
     
     setIsDragging(false);
-    const threshold = cardWidth * 0.2;
     
-    let newIndex = currentIndex;
-    
-    if (Math.abs(dragOffset) > threshold) {
-      if (dragOffset < 0 && !isAtEnd) {
-        newIndex = Math.min(currentIndex + 1, maxIndex);
-      } else if (dragOffset > 0 && !isAtStart) {
-        newIndex = Math.max(currentIndex - 1, 0);
+    // Если это был горизонтальный свайп - обрабатываем переключение слайда
+    if (isHorizontalScroll.current) {
+      const threshold = cardWidth * 0.2;
+      let newIndex = currentIndex;
+      
+      if (Math.abs(dragOffset) > threshold) {
+        if (dragOffset < 0 && !isAtEnd) {
+          newIndex = Math.min(currentIndex + 1, maxIndex);
+        } else if (dragOffset > 0 && !isAtStart) {
+          newIndex = Math.max(currentIndex - 1, 0);
+        }
       }
+      
+      setCurrentIndex(newIndex);
     }
     
-    setCurrentIndex(newIndex);
     setDragOffset(0);
     
     if (sliderRef.current) {
       sliderRef.current.style.cursor = 'grab';
     }
+    
+    isHorizontalScroll.current = false;
   };
   
-  // Расчет transform с использованием новой функции
+  // Расчет transform
   const getTransform = () => {
     const baseTranslate = getBaseTranslate();
     const translate = baseTranslate + dragOffset;
@@ -152,8 +175,8 @@ const TouchSlider = ({ children }) => {
   };
   
   return (
-    <div className="w-[93vw] width-container padding-last-slide max-w-[1440px]  overflow-hidden">
-      <div className="w-full  mx-auto">
+    <div className="w-[93vw] width-container padding-last-slide max-w-[1440px] overflow-hidden">
+      <div className="w-full mx-auto">
         {/* Контейнер с кнопками над слайдером - только для десктопа */}
         <div className="hidden md:flex justify-end items-center mb-6">
           <div className="flex gap-3">
@@ -215,7 +238,7 @@ const TouchSlider = ({ children }) => {
           >
             <div 
               ref={sliderRef}
-              className="cursor-grab active:cursor-grabbing select-none"
+              className="cursor-grab active:cursor-grabbing select-none touch-pan-y"
               style={{ touchAction: 'pan-y pinch-zoom' }}
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
@@ -247,9 +270,6 @@ const TouchSlider = ({ children }) => {
               </div>
             </div>
           </div>
-          
-          {/* Мобильные кнопки скрыты */}
-          {/* Стрелки на мобильной версии убраны полностью */}
         </div>
         
         {/* Индикаторы */}
@@ -265,7 +285,7 @@ const TouchSlider = ({ children }) => {
                 className={`
                   transition-all duration-300 cursor-pointer rounded-full
                   ${currentIndex === idx 
-                    ? 'w-6 sm:w-7 h-1 bg-dark' 
+                    ? 'w-6 sm:w-7 h-1 bg-gray-800' 
                     : 'w-2 h-1 bg-gray-300 hover:bg-gray-400'
                   }
                 `}
@@ -276,7 +296,7 @@ const TouchSlider = ({ children }) => {
         
         {/* Счетчик */}
         {maxIndex > 0 && (
-          <div className="text-center mt-3 sm:mt-4 text-xs sm:text-sm text-dark">
+          <div className="text-center mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500">
             {currentIndex + 1} / {maxIndex + 1}
           </div>
         )}

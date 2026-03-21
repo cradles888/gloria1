@@ -61,7 +61,7 @@ export default function Home() {
       <CardWb title={'Новые квартиры в ЖК Юннатов'} text={'Позиция №1 готова к заселению!'} image={'/wb-unnatov.png'} alt={'wb-unnatov'}/>
       </div>
       <div className='container-padding mx-auto my-30'>
-        <h1 className='text-4xl sm:text-5xl text-dark inline-block'>Новостройки <p className='text-accent font-medium inline-block'>в Великом Новгороде</p></h1>
+        <h1 className='text-[32px] sm:text-5xl text-dark inline-block'>Новостройки <p className='text-accent font-medium inline-block'>в Великом Новгороде</p></h1>
         <Filter/>
       </div>
       <div className='container-padding grid mb-30 mx-auto gap-8'>
@@ -69,7 +69,7 @@ export default function Home() {
         <CardComplex name={'ЖК Раздолье'} street={'ул. Кочетова'} price={'От 5.4 млн'} imageUrl={'/main-card-compex-razdolje.png'}/>
       </div>
       <div className='container-padding mb-30 mx-auto grid gap-8'>
-        <h2 className='text-dark text-[40px]'>Новости</h2>
+        <h2 className='text-dark text-[28px]'>Новости</h2>
         <div className=''>
           
           <TouchSlider>

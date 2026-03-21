@@ -11,7 +11,7 @@ const RangeInput = ({ step = 0.1, min = 0.0, max = 17.0 }) => {
 
     return (
         <div className="border border-dark40 rounded-4xl px-4">
-            <div className="flex gap-4 sm:gap-8 items-center justify-between text-sm text-dark50  my-3">
+            <div className="flex gap-[9vw] sm:gap-8 items-center justify-between text-sm text-dark50 mt-4 mb-[11px]">
                 <div className="flex justify-end gap-1 text-base">
                     <p className="min-w-max">От</p>
                     <div className="w-16 text-left">
@@ -45,7 +45,7 @@ const RangeInput = ({ step = 0.1, min = 0.0, max = 17.0 }) => {
                     return (
                         <div
                             {...props}
-                            className="relative w-full h-0.5"
+                            className="relative -bottom-[0.5px] h-[3px]"
                             style={{
                                 ...props.style,
                             }}

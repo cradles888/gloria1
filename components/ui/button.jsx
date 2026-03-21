@@ -16,6 +16,7 @@ const Button = ({
     const sizes = {
         sm: 'px-6 py-2 text-md rounded-4xl',
         sm_l: 'px-6 h-12 text-md rounded-4xl',
+        sm_2xl: 'px-6 h-14 text-md rounded-4xl',
         md: 'py-3 px-8 text-md rounded-4xl',
         lg: 'text-md rounded-4xl',
         xl: '',
