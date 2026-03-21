@@ -2,17 +2,17 @@
 
 :root {
 
-    --color-accent: #F27618;
-    --color-accent40: #FAD0A3;
-    --color-header: #7D7A75;
+  --color-accent: #F27618;
+  --color-accent40: #FAD0A3;
+  --color-header: #7D7A75;
 
-    --color-dark: #463F35;
-    --color-dark50: #9C968F;
-    --color-dark40: #B5B2AE;
-    --color-dark25: #D0CFCC;
-    --color-dark15: #E3E2E1;
+  --color-dark: #463F35;
+  --color-dark50: #9C968F;
+  --color-dark40: #B5B2AE;
+  --color-dark25: #D0CFCC;
+  --color-dark15: #E3E2E1;
 
-    --color-twopart: #DEDCDC;
+  --color-twopart: #DEDCDC;
 }
 
 
@@ -91,27 +91,40 @@ body {
 }
 
 .perspective-1000 {
-    perspective: 1000px;
+  perspective: 1000px;
 }
 
 .transform-style-3d {
-    transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .backface-hidden {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .rotate-y-0 {
-    transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }
 
 .rotate-y-180 {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .-rotate-y-180 {
-    transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 
+@media (max-width: 400px) {
+  .padding-last-slide {
+    padding-right: 0.5rem;
+  }
+
+
+}
+
+@media (min-width: 1440px) {
+  .width-container {
+    width: 89vw;
+  }
+}

@@ -1,7 +1,7 @@
 import Button from '@/components/ui/button'
 
 const cardNews = ({date, isLike, image, alt, title, desc}) => {
-    const truncateText = (text, maxLength = 40) => {
+    const truncateText = (text, maxLength = 30) => {
         if (!text) return '';
         if (text.length <= maxLength) return text;
         
@@ -18,14 +18,14 @@ const cardNews = ({date, isLike, image, alt, title, desc}) => {
     const truncatedDesc = truncateText(desc);
     
     return(
-        <article className="
+        <article className=" select-none
             grid content-between relative rounded-4xl overflow-hidden px-4 py-6 
             w-full h-full min-h-[350px]
             lg:h-[414px]
             transition-all duration-300 hover:shadow-xl
         ">
             <section className="flex justify-start items-center">
-                <section className="block text-center items-center bg-white rounded-lg px-2 py-1 text-dark">
+                <section className="block text-center items-center bg-white rounded-lg px-2 py-1 text-dark text-xs sm:text-base">
                     {date}
                 </section>
             </section>
