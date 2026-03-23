@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const HeaderWhiteLogo = () => {
@@ -42,7 +43,9 @@ useEffect(() => {
         <div className='container-padding mx-auto my-4 px-4 lg:px-0'>
             {/* Десктопная версия (md и выше) */}
             <header className='hidden lg:flex w-full gap-6'>
+                <Link className='content-center' href={'/'}>
                 <img src="/logo2.svg" alt='logo'/>
+                </Link>
                 <div className='flex bg-[#4C4C4C] items-center rounded-4xl px-8 justify-between w-full py-2'>
                     <div className='flex items-center text-white gap-6'>
                         {/* <a className='min-w-max' href="#">Юннатов</a> */}
@@ -61,8 +64,9 @@ useEffect(() => {
             {/* Мобильная версия с аккордеоном (до md) */}
             <div className='lg:hidden'>
                 <div className='flex items-center justify-between'>
-                    <img src="/logo2.svg" alt='logo2' className='h-14 relative z-20'/>
-                    
+                    <Link className='content-center' href={'/'}>
+                        <img src="/logo2.svg" alt='logo2' className='h-14 relative z-20'/>
+                    </Link>
                     {/* Кнопка бургер */}
                     <button 
                         onClick={toggleMenu}

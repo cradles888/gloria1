@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header"
-import HeaderWhiteLogo from "@/components/header_white_logo"
+import HeaderWhiteLogo from "@/components/header-white-logo"
+import HeaderWrapper from "@/components/HeaderWrapper";
+
 import Footer from "@/components/footer"
 import CardNews from "@/components/news/card-news";
 import { headers } from 'next/headers';
@@ -18,10 +20,9 @@ export const metadata: Metadata = {
   description: "Новгородская строительная компания «Глория», действуя как генеральный подрядчик, на протяжении 20 лет имеет репутацию надежного делового застройщика ... квартиры Великий Новгород. строительство и продажа квартир. отдел продаж. +7(8162) 623-800.",
 };
 
-console.log((await headers()).get('x-pathname'))
- const pathname = (await headers()).get('x-pathname') || '';
-const isUnnatovPage = pathname === '/unnatov' || pathname === '/unnatov/';
-
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || '';
+  const isUnnatovPage = pathname === '/unnatov' || pathname === '/unnatov/';
 
 export default function RootLayout({
   children,
@@ -33,8 +34,7 @@ export default function RootLayout({
       <body
         className={`${roboto.className} antialiased`}
       >
-        {isUnnatovPage ? <HeaderWhiteLogo/>
-         : <Header/>}
+<HeaderWrapper />
         {children}
         <Footer/>
       </body>

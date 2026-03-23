@@ -23,7 +23,7 @@ const buttonSelectParam = ({
     }
 
     return (
-        <input type="text" readOnly defaultValue={text} onClick={toggleParam} className={`border border-dark40 rounded-4xl text-dark py-2 w-14 h-14 outline-none text-center cursor-auto ${isStateButton ? 'bg-accent text-white border-transparent' : ''}`} />
+        <input type="text" readOnly defaultValue={text} onClick={toggleParam} className={`border border-dark40 rounded-4xl text-dark py-2 w-16 h-12 outline-none text-center cursor-auto ${isStateButton ? 'bg-accent text-white border-transparent' : ''}`} />
     );
 }
 

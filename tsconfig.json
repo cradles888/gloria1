@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/header_white_logo.jsx", "components/ui/buttontsx"  ],
+, "components/header-white-logo.jsx", "components/ui/buttontsx"  ],
   "exclude": ["node_modules"]
 }

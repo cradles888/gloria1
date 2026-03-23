@@ -1,6 +1,7 @@
 'use client'
-import Image from 'next/image'
-import { useState } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,9 @@ const Header = () => {
         <div className='container-padding mx-auto my-4 px-4 lg:px-0'>
             {/* Десктопная версия (md и выше) */}
             <header className='hidden lg:flex w-full gap-6'>
-                <img src="/logo.svg" alt='logo'/>
+                <Link className='content-center' href={'/'}>
+                <img src="/logo.svg" alt='logo' className='h-8'/>
+                </Link>
                 <div className='flex bg-header items-center rounded-4xl px-8 justify-between w-full py-2'>
                     <div className='flex items-center text-white gap-6'>
                         {/* <a className='min-w-max' href="#">Юннатов</a> */}
@@ -32,7 +35,9 @@ const Header = () => {
             {/* Мобильная версия с аккордеоном (до md) */}
             <div className='lg:hidden'>
                 <div className='flex items-center justify-between'>
-                    <img src="/logo.svg" alt="" className='relative z-30'/>
+                    <Link className='content-center' href={'/'}>
+                        <img src={isMenuOpen ? '/logo-white.svg' : '/logo.svg'} alt="logo" className='h-6 relative z-30'/>
+                    </Link>
                     
                     {/* Кнопка бургер */}
                     <button 
