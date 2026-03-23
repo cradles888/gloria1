@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Button from '@/components/ui/button';
 
-const ResidentialComplex = ({ name, street, price, imageUrl }) => {
+const ResidentialComplex = ({ name, street, price, imageUrl, imageAlt, linkToPage }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -149,7 +149,7 @@ const ResidentialComplex = ({ name, street, price, imageUrl }) => {
                   </div>
                 </div>
                 <div>
-                  <Button text="Перейти на страницу ЖК" size={'md'} variant={'accent'} className="saturate-66 my-14"/>
+                  <Button text="Перейти на страницу ЖК" size={'md'} variant={'accent'} className="saturate-66 my-14" linkToPage={linkToPage}/>
                 </div>
               </div>
             </div>
@@ -217,8 +217,8 @@ const ResidentialComplex = ({ name, street, price, imageUrl }) => {
                   </div>
                 </div>
               </div>
-              <div className="z-10 bottom-5 left-14 flex justify-center">
-                  <Button text="Перейти на страницу ЖК" size={'md'} variant={'accent'}/>
+              <div className="z-20 bottom-5 left-14 flex justify-center">
+                  <Button text="Перейти на страницу ЖК" size={'md'} variant={'accent'} linkToPage={linkToPage}/>
                 </div>
             </div>
           </div>

@@ -1,10 +1,11 @@
+'use client'
 import { redirect } from "next/navigation";
 import { useEffect, useRef, useState } from "react"
 
 const buttonIcon = ({
     text,
-    imageLink,
-    altImage,
+    iconLink,
+    iconAlt,
     isOpen = false
 }) => {
 
@@ -42,7 +43,7 @@ const buttonIcon = ({
         <div className="grid gap-4 w-70" ref={dropdownRef} onClick={openDropdownList}>
             <button className={`flex items-center min-w-max justify-between gap-10 border border-dark40 rounded-4xl text-dark px-4 h-12 cursor-pointer`}>
                 {isPressedParam !== null ? paramSort[isPressedParam] : text}
-                <img className={`inline ${isOpenList ? 'rotate-270' : 'rotate-90'} transition duration-300 ease-in-out`} width={'24px'} src={imageLink} alt={altImage} />
+                <img className={`inline ${isOpenList ? 'rotate-270' : 'rotate-90'} transition duration-300 ease-in-out`} width={'24px'} src={iconLink} alt={iconAlt} />
             </button>
             <div className={`absolute z-10 mt-16 bg-white w-70 border border-dark40 rounded-4xl transform transition-all duration-300 ease-in-out ${isOpenList ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
                 }`

@@ -25,7 +25,7 @@ const cardNews = ({date, isLike, image, alt, title, desc}) => {
             transition-all duration-300 hover:shadow-xl
         ">
             <section className="flex justify-start items-center">
-                <section className="block text-center items-center bg-white rounded-lg px-2 py-1 text-dark text-xs sm:text-base">
+                <section className="block text-center items-center bg-white rounded-lg px-2 py-1 text-dark text-xs sm:text-sm">
                     {date}
                 </section>
             </section>

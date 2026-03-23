@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react';
 import ButtonParam from '@/components/filter/ui/button-select-param'
-import ButtonDropdown from "@/components/filter/ui/button-dropdown"
 import Button from '@/components/ui/button';
 import Range from '@/components/filter/ui/range';
 
@@ -34,10 +33,10 @@ const filter = () => {
                     <ButtonParam text={'3'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <ButtonParam text={'4+'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <Range />
-                    <Button text='Фильтр' size={'sm_2xl'} variant={'outline'} className='content-center ' />
+                    <Button text='Ещё фильтры' size={'sm_2xl'} variant={'outline'} icon={true} iconUrl='/chevron-arrow.svg' iconClassName='w-6 h-6' className='content-center ' />
                 </div>
                 <div className='hidden lg:block'>
-                    <Button text='Показать предложения' size={'md'} variant={'accent'} className='content-center' />
+                    <Button text='Показать предложения' size={'sm_2xl'} variant={'accent'} className='content-center' />
                 </div>
             </div>
             
@@ -52,9 +51,6 @@ const filter = () => {
             
             <div className='block lg:hidden'>
                 <Button text='Показать предложения' size={'md'} variant={'accent'} className='content-center' />
-            </div>
-            <div>
-                <ButtonDropdown text={'Сортировать'} imageLink={'/chevron-arrow.svg'} altImage={'next-to-page'} />
             </div>
         </div>
     )
