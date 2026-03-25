@@ -21,6 +21,7 @@ useEffect(() => {
         } else {
             // Возвращаем скролл
             const scrollY = document.body.style.top;
+            document.body.style.backgroundColor = '';
             document.body.style.overflow = '';
             document.body.style.position = '';
             document.body.style.width = '';
@@ -34,6 +35,7 @@ useEffect(() => {
         // Cleanup при размонтировании
         return () => {
             document.body.style.overflow = '';
+            document.body.style.backgroundColor = '';
             document.body.style.position = '';
             document.body.style.width = '';
             document.body.style.top = '';
@@ -92,7 +94,7 @@ useEffect(() => {
                         
                         {/* Контакты */}
                         <div className='flex flex-col gap-4 text-white'>
-                            <div className='grid  gap-2 sm:flex items-center justify-between'>
+                            <div className='grid  gap-1 sm:flex items-center justify-between'>
                                 <span className='font-medium'>+7(8162) 623-800</span>
                                 <a href='https://yandex.ru/maps/-/CPRsqWy-' className='flex gap-1 items-center'>
                                 <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>

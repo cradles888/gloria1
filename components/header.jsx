@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +9,38 @@ const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+    
+useEffect(() => {
+        if (isMenuOpen) {
+            // Блокируем скролл на body
+            document.body.style.overflow = 'hidden';
+            // Для мобильных браузеров также блокируем touchmove
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = `-${window.scrollY}px`;
+        } else {
+            // Возвращаем скролл
+            document.body.style.backgroundColor = '';
+            const scrollY = document.body.style.top;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            // Восстанавливаем позицию скролла
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+            }
+        }
+
+        // Cleanup при размонтировании
+        return () => {
+            document.body.style.backgroundColor = '';
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+        };
+    }, [isMenuOpen]);
 
     return(
         <div className='container-padding mx-auto my-4 px-4 lg:px-0'>
@@ -64,10 +96,10 @@ const Header = () => {
                         
                         {/* Контакты */}
                         <div className='flex flex-col gap-4 text-white'>
-                            <div className='grid sm:flex items-center justify-between'>
+                            <div className='grid sm:flex gap-1 items-center justify-between'>
                                 <span className='font-medium'>+7(8162) 623-800</span>
                                 <a href='https://yandex.ru/maps/-/CPRsqWy-' className='flex gap-1 items-center'>
-                                <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>
+                                    <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>
                                     <p>Менделеева, 16</p>
                                 </a>
                             </div>
