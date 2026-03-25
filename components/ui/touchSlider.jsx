@@ -175,10 +175,10 @@ const TouchSlider = ({ children }) => {
   };
   
   return (
-    <div className="w-[93vw] width-container padding-last-slide max-w-[1440px] overflow-hidden">
+    <div className={`w-[93vw] width-container padding-last-slide max-w-[1440px] overflow-hidden`}>
       <div className="w-full mx-auto">
         {/* Контейнер с кнопками над слайдером - только для десктопа */}
-        <div className="hidden md:flex justify-end items-center mb-6">
+        <div className="flex justify-end items-center mb-6">
           <div className="flex gap-3">
             <button
               onClick={goToPrev}

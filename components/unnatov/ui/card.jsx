@@ -1,6 +1,6 @@
 const Card = ({ title, timeFrom, imageUrl, imageAlt }) => {
     return(
-        <article className="relative rounded-4xl w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] overflow-hidden">
+        <article className="relative rounded-4xl w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[425px] overflow-hidden">
             <img
                 className="absolute inset-0 w-full h-full object-cover object-top-left"
                 src={imageUrl}
