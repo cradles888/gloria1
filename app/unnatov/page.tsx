@@ -2,6 +2,7 @@ import Filter from "@/components/filter/page";
 import Button from "@/components/ui/button";
 import ButtonDropdown from "@/components/ui/button-dropdown";
 import { headers } from "next/headers";
+import Dialog from '@/components/dialogHeader'
 
 export default function Unnatov() {
     return(
@@ -24,7 +25,7 @@ export default function Unnatov() {
                 </p>
                 <Button text="Выбрать квартиру" size={'lg'} variant={'dark'}/>
             </div>
-            
+            <Dialog/>
         </div>
 
     )

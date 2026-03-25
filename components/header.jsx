@@ -1,57 +1,20 @@
 'use client'
-import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-    
-useEffect(() => {
-        if (isMenuOpen) {
-            // Блокируем скролл на body
-            document.body.style.overflow = 'hidden';
-            // Для мобильных браузеров также блокируем touchmove
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.top = `-${window.scrollY}px`;
-        } else {
-            // Возвращаем скролл
-            document.body.style.backgroundColor = '';
-            const scrollY = document.body.style.top;
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            document.body.style.top = '';
-            // Восстанавливаем позицию скролла
-            if (scrollY) {
-                window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-            }
-        }
-
-        // Cleanup при размонтировании
-        return () => {
-            document.body.style.backgroundColor = '';
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            document.body.style.top = '';
-        };
-    }, [isMenuOpen]);
 
     return(
         <div className='container-padding mx-auto my-4 px-4 lg:px-0'>
             {/* Десктопная версия (md и выше) */}
             <header className='hidden lg:flex w-full gap-6'>
                 <Link className='content-center' href={'/'}>
-                <img src="/logo.svg" alt='logo' className='h-8'/>
+                    <img src="/logo.svg" alt='logo' className='h-8'/>
                 </Link>
                 <div className='flex bg-header items-center rounded-4xl px-8 justify-between w-full py-2'>
                     <div className='flex items-center text-white gap-6'>
-                        {/* <a className='min-w-max' href="#">Юннатов</a> */}
                         <a className='min-w-max' href="#">Покупка квартиры</a>
                         <a className='min-w-max' href="#">О нас</a>
                         <a className='min-w-max' href="#">Новости</a>
@@ -64,48 +27,116 @@ useEffect(() => {
                 </div>
             </header>
 
-            {/* Мобильная версия с аккордеоном (до md) */}
+            {/* Мобильная версия */}
             <div className='lg:hidden'>
                 <div className='flex items-center justify-between'>
                     <Link className='content-center' href={'/'}>
-                        <img src={isMenuOpen ? '/logo-white.svg' : '/logo.svg'} alt="logo" className='h-6 relative z-30'/>
+                        <img 
+                            src={isMenuOpen ? '/logo-white.svg' : '/logo.svg'} 
+                            alt="logo" 
+                            className='h-6 relative z-30 transition-all duration-300'
+                        />
                     </Link>
                     
                     {/* Кнопка бургер */}
                     <button 
-                        onClick={toggleMenu}
+                        onClick={() => setIsMenuOpen(true)}
                         className='flex relative z-30 flex-col gap-1.5 p-2 w-14 h-14 bg-white rounded-4xl justify-center items-center'
+                        aria-label="Открыть меню"
                     >
-                        <span className={`block w-6 h-0.5 bg-header transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                        <span className={`block w-6 h-0.5 bg-header transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                        <span className={`block w-6 h-0.5 bg-header transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                        <span className='block w-6 h-0.5 bg-header'></span>
+                        <span className='block w-6 h-0.5 bg-header'></span>
+                        <span className='block w-6 h-0.5 bg-header'></span>
                     </button>
                 </div>
 
-                {/* Аккордеон меню */}
-                <div className={` fixed inset-0 z-20 transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
-                    <div className='bg-header h-full pt-36 w-full p-6 overflow-y-auto'>
-                        {/* Навигационные ссылки */}
-                        <div className='flex flex-col gap-4 text-white mb-6'>
-                            <a href="#" className='py-2 border-b border-dark40'>Юннатов</a>
-                            <a href="#" className='py-2 border-b border-dark40'>Покупка квартиры</a>
-                            <a href="#" className='py-2 border-b border-dark40'>О нас</a>
-                            <a href="#" className='py-2 border-b border-dark40'>Новости</a>
-                            <a href="#" className='py-2 border-b border-dark40'>Построенные объекты</a>
-                        </div>
-                        
-                        {/* Контакты */}
-                        <div className='flex flex-col gap-4 text-white'>
-                            <div className='grid sm:flex gap-1 items-center justify-between'>
-                                <span className='font-medium'>+7(8162) 623-800</span>
-                                <a href='https://yandex.ru/maps/-/CPRsqWy-' className='flex gap-1 items-center'>
-                                    <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>
-                                    <p>Менделеева, 16</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/* Модальное окно меню с анимацией */}
+                <Transition show={isMenuOpen} as={Fragment}>
+                    <Dialog 
+                        onClose={() => setIsMenuOpen(false)}
+                        className="relative z-20 lg:hidden"
+                    >
+                        {/* Анимация затемнения (фон меню) */}
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <div className="fixed inset-0 bg-header" aria-hidden="true" />
+                        </Transition.Child>
+
+                        {/* Анимация панели меню */}
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 -translate-y-full"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 -translate-y-full"
+                        >
+                            <Dialog.Panel className="fixed inset-0 overflow-y-auto p-6 pt-36">
+                                {/* Навигационные ссылки */}
+                                <div className='flex flex-col gap-4 text-white mb-6'>
+                                    <a 
+                                        href="#" 
+                                        className='py-2 border-b border-dark40'
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Юннатов
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        className='py-2 border-b border-dark40'
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Покупка квартиры
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        className='py-2 border-b border-dark40'
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        О нас
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        className='py-2 border-b border-dark40'
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Новости
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        className='py-2 border-b border-dark40'
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Построенные объекты
+                                    </a>
+                                </div>
+                                
+                                {/* Контакты */}
+                                <div className='flex flex-col gap-4 text-white'>
+                                    <div className='grid sm:flex gap-1 items-center justify-between'>
+                                        <span className='font-medium'>+7(8162) 623-800</span>
+                                        <a 
+                                            href='https://yandex.ru/maps/-/CPRsqWy-' 
+                                            className='flex gap-1 items-center'
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            <img src="/pin_fill.svg" alt="pin-fill" width={'32px'}/>
+                                            <p>Менделеева, 16</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </Dialog.Panel>
+                        </Transition.Child>
+                    </Dialog>
+                </Transition>
             </div>
         </div>
     )
