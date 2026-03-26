@@ -187,3 +187,9 @@ body {
     width: 100%;
   }
 }  */
+
+/* SWIPER CONFIGURATIONS */
+
+.swiper-pagination-bullet-active {
+  background: #F27618;
+}

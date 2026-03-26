@@ -6,21 +6,38 @@ import FirstInfoBlock from '@/components/unnatov/first-info-block'
 import UniInfoBlock from '@/components/unnatov/uni-info-block'
 import { formatText } from '@/utils/text-format'
 import { formatTextWithBreaks } from '@/utils/text-format'
-import SliderFullScreen from '@/components/touch-slider-full-screen'
+// import SliderFullScreen from '@/components/touch-slider-full-screen'
+import SliderFullScreen from '@/components/swiper/swiper-fast'
+import FreemodeSlider from '@/components/swiper/swiper-freemode'
 
 export default function Unnatov() {
-    const historicalLocations = [
-        {title: 'Свято-Юрьев мужской монастырь', timeFrom: '15 минут на машине', image: '/unnatov/monastery.jpg', alt: 'Свято_Юрьев_мужской_монастырь'},
-        {title: 'Аркада гостиного двора', timeFrom: '20 минут пешком', image: '/unnatov/arcade.jpg', alt: 'Аркада_гостиного_двора'},
-        {title: 'Первая медицинская комиссия', timeFrom: '3 минуты пешком', image: '/unnatov/ambulance-station.jpg', alt: 'Первая_медицинская_комиссия'},
-        {title: 'Станция скорой помощи', timeFrom: '5 минут пешком', image: '/unnatov/medical-center.jpg', alt: 'Станция_скорой_помощи'}
+    const freemodeSwiper = [
+        { title: 'Двор без машин', desc:'Эксклюзивная концепция', image: '/unnatov/no-car.jpg', alt: 'двор_без_машин' },
+        { title: 'Отделка из дерева', desc:'Экологичный материал', image: '/unnatov/finishing.jpg', alt: 'отдекла_в_подъезде' },
+        { title: 'Надежные и крепкие стены', desc:'Из полнотелого кирпича', image: '/unnatov/material.jpg', alt: 'материал_стен' },
+        { title: 'Абвгди', desc:'Абвгди', image: '/unnatov/slider1.jpg', alt: 'вид_сверху' },
+        { title: 'Абвгди', desc:'Абвгди', image: '/unnatov/slider1.jpg', alt: 'вид_сверху' },
     ]
 
-        const educationBlock = [
-        {title: 'Школа №21 через дорогу', timeFrom: '10 минут на машине', image: '/unnatov/school21.jpg', alt: 'Школа_№21_через_дорогу'},
-        {title: 'Детский сад “Ручеёк”', timeFrom: '7 минут пешком', image: '/unnatov/kindergarten.jpg', alt: 'Детский_сад_“Ручеёк'},
-        {title: 'Торгово-технологический техникум', timeFrom: '15 минут пешком', image: '/unnatov/technical-college.jpg', alt: 'Торгово_технологический_техникум'},
-        {title: 'Педагогический институт НовГУ', timeFrom: '10 минут пешком', image: '/unnatov/institute.jpg', alt: 'Педагогический_институт_НовГУ'}
+
+    const fullScreenSlider = [
+        { src: '/unnatov/genplan.jpg', alt: 'вид_сверху' },
+        { src: '/unnatov/slider1.jpg', alt: 'вид_сверху' },
+        { src: '/unnatov/slider2.jpg', alt: 'вид_сверху' },
+    ]
+
+    const historicalLocations = [
+        { title: 'Свято-Юрьев мужской монастырь', timeFrom: '15 минут на машине', image: '/unnatov/monastery.jpg', alt: 'Свято_Юрьев_мужской_монастырь' },
+        { title: 'Аркада гостиного двора', timeFrom: '20 минут пешком', image: '/unnatov/arcade.jpg', alt: 'Аркада_гостиного_двора' },
+        { title: 'Первая медицинская комиссия', timeFrom: '3 минуты пешком', image: '/unnatov/ambulance-station.jpg', alt: 'Первая_медицинская_комиссия' },
+        { title: 'Станция скорой помощи', timeFrom: '5 минут пешком', image: '/unnatov/medical-center.jpg', alt: 'Станция_скорой_помощи' }
+    ]
+
+    const educationBlock = [
+        { title: 'Школа №21 через дорогу', timeFrom: '10 минут на машине', image: '/unnatov/school21.jpg', alt: 'Школа_№21_через_дорогу' },
+        { title: 'Детский сад “Ручеёк”', timeFrom: '7 минут пешком', image: '/unnatov/kindergarten.jpg', alt: 'Детский_сад_“Ручеёк' },
+        { title: 'Торгово-технологический техникум', timeFrom: '15 минут пешком', image: '/unnatov/technical-college.jpg', alt: 'Торгово_технологический_техникум' },
+        { title: 'Педагогический институт НовГУ', timeFrom: '10 минут пешком', image: '/unnatov/institute.jpg', alt: 'Педагогический_институт_НовГУ' }
     ]
     return (
         <div>
@@ -43,17 +60,18 @@ export default function Unnatov() {
                 </p>
                 <Button text="Выбрать квартиру" size={'lg'} variant={'dark'} />
             </div>
-            <FirstInfoBlock/>
+            <FirstInfoBlock />
+            <SliderFullScreen data={fullScreenSlider} />
             {/* <div className="relative h-[811px]"> */}
-                {/* <h2>План</h2> */}
-                <SliderFullScreen >
+            {/* <h2>План</h2> */}
+            {/* <SliderFullScreen >
                     <img
-                        className=" w-full h-full object-cover object-top-left"
+                        className=" w-full h-full object-contain object-center"
                         src={'/unnatov/genplan.jpg'}
                         alt={'генеральный_план_юннатов'}
                     />
                      <img
-                        className=" w-full h-full object-cover md:object-contain object-center"
+                        className=" w-full h-full object-contain object-center"
                         src={'/unnatov/monastery.jpg'}
                         alt={'генеральный_план_юннатов'}
                     />
@@ -68,22 +86,29 @@ export default function Unnatov() {
                         alt={'test'}
                     />
                                         <img
-                        className=" w-full h-full object-cover md:object-contain object-center"
+                        className=" w-full h-full object-contain object-center"
                         src={'/unnatov/slider3.jpg'}
                         alt={'test'}
                     />
-            </SliderFullScreen>
+            </SliderFullScreen> */}
             {/* </div> */}
-            <UniInfoBlock 
-                title={formatText('Инфраструктура и&nbsp;историческое окружение')} 
+            <div className="container-padding mx-auto">
+            <UniInfoBlock
+                title={formatText('Инфраструктура и&nbsp;историческое окружение')}
                 desc={formatText('Здесь гармонично соединяются дух прошлого и&nbsp;комфорт настоящего. Вы&nbsp;будете жить среди архитектурных памятников, впитывая атмосферу города, но&nbsp;при этом вам доступны все современные удобства: от&nbsp;супермаркетов и&nbsp;фитнес-центров до&nbsp;детских садов и&nbsp;клиник. Это лучшее из&nbsp;двух миров прямо за&nbsp;окном.')}
-                dataObject={historicalLocations}
+                data={historicalLocations}
             />
-            <UniInfoBlock 
-                title={formatTextWithBreaks('Образование<br/> Учёба для&nbsp;детей&nbsp;— рядом')} 
+            <UniInfoBlock
+                title={formatTextWithBreaks('Образование<br/> Учёба для&nbsp;детей&nbsp;— рядом')}
                 desc={formatText('Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные переезды. В&nbsp;шаговой доступности от&nbsp;дома расположены детские сады, школы и&nbsp;развивающие центры. Это не&nbsp;только безопасность и&nbsp;экономия времени, но&nbsp;и&nbsp;возможность для&nbsp;ребёнка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учёбу и&nbsp;хобби.')}
-                dataObject={educationBlock}
+                data={educationBlock}
             />
+
+            <UniInfoBlock title={'Особенности проекта'} desc={formatText(' Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные&nbsp;переезды.В&nbsp;шаговой доступности от&nbsp;дома расположены детские&nbsp;сады, школы и&nbsp;развивающие&nbsp;центры. Это не&nbsp;только безопасность и&nbsp;экономия&nbsp;времени, но&nbsp;и&nbsp;возможность для&nbsp;ребёнка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учёбу и&nbsp;хобби.')} 
+            data={freemodeSwiper} 
+            slider={true}/>
+            {/* <FreemodeSlider data={freemodeSwiper}/> */}
+            </div>
         </div>
 
     )

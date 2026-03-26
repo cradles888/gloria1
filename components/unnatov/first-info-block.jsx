@@ -22,19 +22,19 @@ const firstInfoBlock = () => {
                 <section className="hidden lg:grid lg:grid-cols-[1.7fr_1fr_1fr] gap-6 lg:gap-8">
                     <Card
                         title="Кремль"
-                        timeFrom="10 минут пешком"
+                        desc="10 минут пешком"
                         imageUrl={"/unnatov/kremlin.jpg"}
                         imageAlt={"Кремль"}
                     />
                     <Card
                         title="Театр драмы"
-                        timeFrom="10 минут пешком"
+                        desc="10 минут пешком"
                         imageUrl={"/unnatov/theatre.jpg"}
                         imageAlt={"Театр"}
                     />
                     <Card
                         title="Вокзал"
-                        timeFrom="10 минут пешком"
+                        desc="10 минут пешком"
                         imageUrl={"/unnatov/station.jpg"}
                         imageAlt={"Вокзал"}
                     />
@@ -43,19 +43,19 @@ const firstInfoBlock = () => {
                     <TouchSlider>
                         <Card
                             title="Кремль"
-                            timeFrom="10 минут пешком"
+                            desc="10 минут пешком"
                             imageUrl={"/unnatov/kremlin.jpg"}
                             imageAlt={"Кремль"}
                         />
                         <Card
                             title="Театр драмы"
-                            timeFrom="10 минут пешком"
+                            desc="10 минут пешком"
                             imageUrl={"/unnatov/theatre.jpg"}
                             imageAlt={"Театр"}
                         />
                         <Card
                             title="Вокзал"
-                            timeFrom="10 минут пешком"
+                            desc="10 минут пешком"
                             imageUrl={"/unnatov/station.jpg"}
                             imageAlt={"Вокзал"}
                         />

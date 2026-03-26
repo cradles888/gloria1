@@ -1,4 +1,4 @@
-const Card = ({ title, timeFrom, imageUrl, imageAlt }) => {
+const Card = ({ title, desc, imageUrl, imageAlt }) => {
     return(
         <article className="relative rounded-4xl w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[425px] overflow-hidden">
             <img
@@ -11,7 +11,7 @@ const Card = ({ title, timeFrom, imageUrl, imageAlt }) => {
                     {title}
                 </p>
                 <p className="text-twopart text-base md:text-base lg:text-lg xl:text-xl">
-                    {timeFrom}
+                    {desc}
                 </p>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
