@@ -79,7 +79,7 @@ const HeaderWhiteLogo = () => {
                                 {/* Навигационные ссылки */}
                                 <div className='flex flex-col gap-4 text-white mb-6'>
                                     <a 
-                                        href="#" 
+                                        href="/unnatov" 
                                         className='py-2 border-b border-dark40'
                                         onClick={() => setIsMenuOpen(false)}
                                     >

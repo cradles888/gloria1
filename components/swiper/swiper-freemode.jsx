@@ -56,7 +56,7 @@ const freemodeSlider = ({ data }) => {
                         spaceBetween: 30,
                     },
                 }}
-                className="mySwiper"
+                className="mySwiper rounded-4xl"
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>

@@ -45,7 +45,7 @@ const RangeInput = ({ step = 0.1, min = 0.0, max = 17.0 }) => {
                     return (
                         <div
                             {...props}
-                            className="relative sm:-bottom-2 h-[3px]"
+                            className="relative sm:-bottom-2 top-px sm:top-auto h-[3px]"
                             style={{
                                 ...props.style,
                             }}

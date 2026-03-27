@@ -31,7 +31,6 @@ const filter = () => {
                     <ButtonParam text={'1'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <ButtonParam text={'2'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <ButtonParam text={'3'} onButtonClick={handleParamClick} activeParams={stateParam} />
-                    <ButtonParam text={'4+'} onButtonClick={handleParamClick} activeParams={stateParam} />
                     <Range />
                     <Button text='Ещё фильтры' size={'sm_2xl'} variant={'outline'} icon={true} iconUrl='/chevron-arrow.svg' iconClassName='w-6 h-6' className='content-center ' />
                 </div>

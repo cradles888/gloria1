@@ -2,9 +2,9 @@ import Card from "@/components/unnatov/ui/card";
 import TouchSlider from "@/components/ui/touchSlider";
 import FreemodeSlider from "@/components/swiper/swiper-freemode";
 
-const uniInfoBlock = ({ title, desc, data, slider = false }) => {
+const uniInfoBlock = ({ title, desc, data, slider = false, className = '' }) => {
     return (
-        <article className={` ${slider ? '' : 'grid lg:gap-16 my-15 md:my-30 px-4 lg:px-0'}`}>
+        <article className={`${slider ? `${className}` : `grid lg:gap-16 my-15 md:my-30 ${className}`}`}>
             <section className={`grid md:grid-cols-[1fr_1.3fr] gap-8 lg:gap-16 mb-16 lg:mb-0 ${slider ? 'lg:mb-16' : ''}`}>
                 <h3 className="text-xl md:text-[32px] font-medium text-dark leading-[116%]">
                     {title}
@@ -21,7 +21,7 @@ const uniInfoBlock = ({ title, desc, data, slider = false }) => {
                             <Card
                                 key={index}
                                 title={item.title}
-                                timeFrom={item.timeFrom}
+                                desc={item.desc}
                                 imageUrl={item.image}
                                 imageAlt={item.alt}
                             />
@@ -33,7 +33,7 @@ const uniInfoBlock = ({ title, desc, data, slider = false }) => {
                                 <Card
                                     key={index}
                                     title={item.title}
-                                    timeFrom={item.timeFrom}
+                                    desc={item.desc}
                                     imageUrl={item.image}
                                     imageAlt={item.alt}
                                 />

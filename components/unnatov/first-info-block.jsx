@@ -1,9 +1,11 @@
 import Card from "@/components/unnatov/ui/card";
 import TouchSlider from "@/components/ui/touchSlider";
 
-const firstInfoBlock = () => {
+const firstInfoBlock = ({className = ''}) => {
     return (
-        <article className="container-padding mx-auto grid lg:gap-16 my-15 md:my-30 px-4 lg:px-0">
+        <article className={`grid lg:gap-16 
+            ${className} 
+        `}>
             <section className="grid md:grid-cols-[1fr_1.3fr] gap-8 lg:gap-16 mb-16 lg:mb-0">
                 <h3 className="text-xl md:text-[32px] font-medium text-dark leading-[116%]">
                     Популярные места в&nbsp;пешей доступности
