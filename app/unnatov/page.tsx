@@ -12,11 +12,11 @@ import FreemodeSlider from '@/components/swiper/swiper-freemode'
 
 export default function Unnatov() {
     const freemodeSwiper = [
-        { title: 'Двор без машин', desc:'Эксклюзивная концепция', image: '/unnatov/no-car.jpg', alt: 'двор_без_машин' },
-        { title: 'Отделка из дерева', desc:'Экологичный материал', image: '/unnatov/finishing.jpg', alt: 'отдекла_в_подъезде' },
-        { title: 'Надежные и крепкие стены', desc:'Из полнотелого кирпича', image: '/unnatov/material.jpg', alt: 'материал_стен' },
-        { title: 'Абвгди', desc:'Абвгди', image: '/unnatov/slider1.jpg', alt: 'вид_сверху' },
-        { title: 'Абвгди', desc:'Абвгди', image: '/unnatov/slider1.jpg', alt: 'вид_сверху' },
+        { title: 'Двор без машин', desc:'Эксклюзивная концепция', imageUrl: '/unnatov/no-car.jpg', imageAlt: 'двор_без_машин' },
+        { title: 'Отделка из дерева', desc:'Экологичный материал', imageUrl: '/unnatov/finishing.jpg', imageAlt: 'отдекла_в_подъезде' },
+        { title: 'Надежные и крепкие стены', desc:'Из полнотелого кирпича', imageUrl: '/unnatov/material.jpg', imageAlt: 'материал_стен' },
+        { title: 'Абвгди', desc:'Абвгди', imageUrl: '/unnatov/slider1.jpg', imageAlt: 'вид_сверху' },
+        { title: 'Абвгди', desc:'Абвгди', imageUrl: '/unnatov/slider1.jpg', imageAlt: 'вид_сверху' },
     ]
 
 
@@ -27,17 +27,17 @@ export default function Unnatov() {
     ]
 
     const historicalLocations = [
-        { title: 'Свято-Юрьев мужской монастырь', desc: '15 минут на машине', image: '/unnatov/monastery.jpg', alt: 'Свято_Юрьев_мужской_монастырь' },
-        { title: 'Аркада гостиного двора', desc: '20 минут пешком', image: '/unnatov/arcade.jpg', alt: 'Аркада_гостиного_двора' },
-        { title: 'Первая медицинская комиссия', desc: '3 минуты пешком', image: '/unnatov/ambulance-station.jpg', alt: 'Первая_медицинская_комиссия' },
-        { title: 'Станция скорой помощи', desc: '5 минут пешком', image: '/unnatov/medical-center.jpg', alt: 'Станция_скорой_помощи' }
+        { title: 'Свято-Юрьев мужской монастырь', desc: '15 минут на машине', imageUrl: '/unnatov/monastery.jpg', imageAlt: 'Свято_Юрьев_мужской_монастырь' },
+        { title: 'Аркада гостиного двора', desc: '20 минут пешком', imageUrl: '/unnatov/arcade.jpg', imageAlt: 'Аркада_гостиного_двора' },
+        { title: 'Первая медицинская комиссия', desc: '3 минуты пешком', imageUrl: '/unnatov/ambulance-station.jpg', imageAlt: 'Первая_медицинская_комиссия' },
+        { title: 'Станция скорой помощи', desc: '5 минут пешком', imageUrl: '/unnatov/medical-center.jpg', imageAlt: 'Станция_скорой_помощи' }
     ]
 
     const educationBlock = [
-        { title: 'Школа №21 через дорогу', desc: '10 минут на машине', image: '/unnatov/school21.jpg', alt: 'Школа_№21_через_дорогу' },
-        { title: 'Детский сад “Ручеёк”', desc: '7 минут пешком', image: '/unnatov/kindergarten.jpg', alt: 'Детский_сад_“Ручеёк' },
-        { title: 'Торгово-технологический техникум', desc: '15 минут пешком', image: '/unnatov/technical-college.jpg', alt: 'Торгово_технологический_техникум' },
-        { title: 'Педагогический институт НовГУ', desc: '10 минут пешком', image: '/unnatov/institute.jpg', alt: 'Педагогический_институт_НовГУ' }
+        { title: 'Школа №21 через дорогу', desc: '10 минут на машине', imageUrl: '/unnatov/school21.jpg', imageAlt: 'Школа_№21_через_дорогу' },
+        { title: 'Детский сад “Ручеёк”', desc: '7 минут пешком', imageUrl: '/unnatov/kindergarten.jpg', imageAlt: 'Детский_сад_“Ручеёк' },
+        { title: 'Торгово-технологический техникум', desc: '15 минут пешком', imageUrl: '/unnatov/technical-college.jpg', imageAlt: 'Торгово_технологический_техникум' },
+        { title: 'Педагогический институт НовГУ', desc: '10 минут пешком', imageUrl: '/unnatov/institute.jpg', imageAlt: 'Педагогический_институт_НовГУ' }
     ]
     return (
         <div>

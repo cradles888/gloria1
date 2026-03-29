@@ -1,6 +1,6 @@
 import Button from '@/components/ui/button'
 
-const cardNews = ({date, isLike, image, alt, title, desc}) => {
+const cardNews = ({date, imageUrl, imageAlt, title, desc}) => {
     const truncateText = (text, maxLength = 30) => {
         if (!text) return '';
         if (text.length <= maxLength) return text;
@@ -32,8 +32,8 @@ const cardNews = ({date, isLike, image, alt, title, desc}) => {
             
             <img
                 className="absolute inset-0 -z-10 w-full h-full object-cover"
-                src={image}
-                alt={alt}
+                src={imageUrl}
+                alt={imageAlt}
             />
             
             <div className="grid justify-items-start text-white gap-2 relative z-10">

@@ -12,74 +12,33 @@ import 'swiper/css/navigation';
 
 import { useState } from "react";
 import Card from "@/components/unnatov/ui/card";
+import CardNews from "@/components/news/card-news";
 
-const freemodeSlider = ({ data }) => {
+const freemodeSlider = ({ data, type = "default" }) => {
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const [swiperInstance, setSwiperInstance] = useState(null);
 
+    const slideComponents = {
+        default: Card,
+        news: CardNews
+    }
+
+    const CardComponent = slideComponents[type]
+
     return (
         <div className="relative">
-            <Swiper
-                modules={[FreeMode, Navigation]}
-                slidesPerView={3}
-                spaceBetween={30}
-                freeMode={true}
-                onSwiper={(swiper) => {
-                    setSwiperInstance(swiper);
-                    setIsBeginning(swiper.isBeginning);
-                    setIsEnd(swiper.isEnd);
-                }}
-                onSlideChange={(swiper) => {
-                    setIsBeginning(swiper.isBeginning);
-                    setIsEnd(swiper.isEnd);
-                }}
-                breakpoints={{
-                    0: {
-                        slidesPerView: 1,
-                        spaceBetween: 20
-                    },
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 1.5,
-                        spaceBetween: 24,
-                    },
-                    1024: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1280: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                }}
-                className="mySwiper rounded-4xl"
-            >
-                {data.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <Card
-                            title={item.title}
-                            desc={item.desc}
-                            imageUrl={item.image}
-                            imageAlt={item.alt}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-            
-            <button
+            <div className="gap-4 justify-end hidden md:flex">
+                        <button
                 onClick={() => swiperInstance?.slidePrev()}
                 className={`
-                    absolute left-4 top-1/2 -translate-y-1/2
+                    left-4 top-1/2 -translate-y-1/2
                     z-20 w-11 h-11 rounded-full
                     flex items-center justify-center
                     transition-all duration-200 shadow-sm
                     ${isBeginning
-                        ? "bg-gray-100 cursor-not-allowed opacity-50"
-                        : "bg-white border border-gray-200 hover:bg-gray-50 hover:shadow-md active:scale-95 cursor-pointer"
+                        ? "bg-dark25 cursor-not-allowed opacity-50"
+                        : "bg-dark/10 backdrop-blur-3xl hover:bg-dark/10 hover:shadow-md active:scale-95 cursor-pointer"
                     }
                 `}
                 disabled={isBeginning}
@@ -105,13 +64,13 @@ const freemodeSlider = ({ data }) => {
             <button
                 onClick={() => swiperInstance?.slideNext()}
                 className={`
-                    absolute right-4 top-1/2 -translate-y-1/2
+                    right-4 top-1/2 -translate-y-1/2
                     z-20 w-11 h-11 rounded-full
                     flex items-center justify-center
                     transition-all duration-200 shadow-sm
                     ${isEnd
-                        ? "bg-gray-100 cursor-not-allowed opacity-50"
-                        : "bg-white border border-gray-200 hover:bg-gray-50 hover:shadow-md active:scale-95 cursor-pointer"
+                        ? "bg-dark25 cursor-not-allowed opacity-50"
+                        : "bg-dark/10 backdrop-blur-3xl hover:bg-dark/10 hover:shadow-md active:scale-95 cursor-pointer"
                     }
                 `}
                 disabled={isEnd}
@@ -133,6 +92,53 @@ const freemodeSlider = ({ data }) => {
                     />
                 </svg>
             </button>
+            </div>
+            <Swiper
+                modules={[FreeMode, Navigation]}
+                slidesPerView={3}
+                spaceBetween={30}
+                freeMode={true}
+                onSwiper={(swiper) => {
+                    setSwiperInstance(swiper);
+                    setIsBeginning(swiper.isBeginning);
+                    setIsEnd(swiper.isEnd);
+                }}
+                onSlideChange={(swiper) => {
+                    setIsBeginning(swiper.isBeginning);
+                    setIsEnd(swiper.isEnd);
+                }}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1.2,
+                        spaceBetween: 20
+                    },
+                    640: {
+                        slidesPerView: 1.3,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1280: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                }}
+                className="mySwiper rounded-4xl"
+            >
+                {data.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <CardComponent {...item}/>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            
+
         </div>
     );
 };

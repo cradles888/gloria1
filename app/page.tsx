@@ -21,19 +21,20 @@ export default function Home() {
           alt={"wb-unnatov"}
         />
       </div>
-      <div className="container-padding mx-auto my-30">
-        <h1 className="text-[32px] sm:text-5xl text-dark inline-block">
+      <div className="container-padding mx-auto my-12">
+        <h1 className="text-[32px] font-medium sm:text-4xl text-dark pb-4 inline-block border-b border-dark40 w-full">
           Новостройки{" "}
-          <p className="text-accent font-medium inline-block">
+          <p className="text-accent  inline-block">
             в Великом Новгороде
           </p>
         </h1>
+        <div className="grid">
         <Filter />
-        <div>
-          <ButtonDropdown text={'Сортировать'} iconLink={'/chevron-arrow.svg'} iconAlt={'next-to-page'} />
+          {/* <ButtonDropdown text={'Сортировать'} iconLink={'/chevron-arrow.svg'} iconAlt={'next-to-page'} /> */}
         </div>
       </div>
       <div className="container-padding grid mb-30 mx-auto gap-8">
+        <h2 className="text-3xl text-dark font-medium">Популярные проекты</h2>
         <CardComplex
           name={"ЖК Юннатов"}
           street={"ул. Псковская"}
@@ -51,7 +52,9 @@ export default function Home() {
           linkToPage={'/razdolie'}
         />
       </div>
+      <div className="container-padding mx-auto mb-30">
       <NewsModule/>
+      </div>
     </div>
   );
 }

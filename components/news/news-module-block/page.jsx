@@ -1,62 +1,58 @@
 import CardNews from "@/components/news/card-news";
 import TouchSlider from "@/components/ui/touchSlider";
+import FreemodeSlider from "@/components/swiper/swiper-freemode";
 
 const newsModule = () => {
-      const newsData = [
+  const newsData = [
     {
       title: "Оправдана ли нелюбовь к квартирам на последнем этаже?",
       desc: "Инжинер развеял миф про последние этажи...",
-      image: "/images/news/news1.png",
-      alt: "нелюбовь_к_первым_этажам",
-      isLike: true,
+      imageUrl: "/images/news/news1.png",
+      imageAlt: "нелюбовь_к_первым_этажам",
       date: "20 марта 2026",
     },
     {
       title: "Как выбрать идеальную квартиру?",
       desc: "Советы экспертов по планировке и расположению...",
-      image: "/images/news/news2.png",
-      alt: "выбор_квартиры",
-      isLike: false,
+      imageUrl: "/images/news/news2.png",
+      imageAlt: "выбор_квартиры",
       date: "19 марта 2026",
     },
     {
       title: "Топ-5 ошибок при покупке",
       desc: "На что обратить внимание перед подписанием договора...",
-      image: "/images/news/news3.png",
-      alt: "ошибки_покупки",
-      isLike: true,
+      imageUrl: "/images/news/news3.png",
+      imageAlt: "ошибки_покупки",
       date: "18 марта 2026",
     },
     {
       title: "Как работает ипотека в 2026 году?",
       desc: "Обзор программ и процентных ставок...",
-      image: "/images/news/news2.png",
-      alt: "ипотека",
-      isLike: false,
+      imageUrl: "/images/news/news2.png",
+      imageAlt: "ипотека",
       date: "17 марта 2026",
     },
     {
       title: "5 трендов в дизайне интерьера",
       desc: "Что будет актуально в этом году...",
-      image: "/images/news/news1.png",
-      alt: "тренды",
-      isLike: true,
+      imageUrl: "/images/news/news1.png",
+      imageAlt: "тренды",
       date: "16 марта 2026",
     },
     {
       title: "Как не переплатить за квартиру?",
       desc: "Секреты от опытного риэлтора...",
-      image: "/images/news/news3.png",
-      alt: "секреты",
-      isLike: false,
+      imageUrl: "/images/news/news3.png",
+      imageAlt: "секреты",
       date: "15 марта 2026",
     },
   ];
-    return(
-            <div className="container-padding mb-30 mx-auto grid gap-6">
-        <h2 className="text-dark text-[28px] sm:text-[36px]">Новости</h2>
-        <div className="">
-          <TouchSlider>
+  return (
+    <div>
+      <h2 className="text-dark text-[28px] font-medium sm:text-[36px] mb-12 border-b border-dark40 pb-4">Новости</h2>
+      <div className="">
+        <FreemodeSlider data={newsData} type="news" />
+        {/* <TouchSlider>
             {newsData.map((news, idx) => (
               <CardNews
                 key={idx}
@@ -68,10 +64,10 @@ const newsModule = () => {
                 date={news.date}
               />
             ))}
-          </TouchSlider>
-        </div>
+          </TouchSlider> */}
       </div>
-    );
+    </div>
+  );
 }
 
 export default newsModule;
