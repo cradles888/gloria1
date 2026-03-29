@@ -1,4 +1,4 @@
-const Card = ({ title, desc, imageUrl, imageAlt }) => {
+const Card = ({ title, desc, imageUrl, imageAlt, horizontalCard = false }) => {
     return(
         <article className="relative rounded-4xl w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[425px] overflow-hidden">
             <img
@@ -6,7 +6,7 @@ const Card = ({ title, desc, imageUrl, imageAlt }) => {
                 src={imageUrl}
                 alt={imageAlt}
             />
-            <div className="absolute z-10 inset-0 grid content-end py-6 px-6 xl:px-8">
+            <div className={`absolute z-10 inset-0  content-end py-6 px-6 xl:px-8 ${horizontalCard ? 'flex justify-between' : 'grid'}`}>
                 <p className="text-white text-lg md:text-xl lg:text-xl xl:text-2xl font-medium">
                     {title}
                 </p>

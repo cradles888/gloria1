@@ -2,7 +2,7 @@ import Filter from "@/components/filter/page";
 import Button from "@/components/ui/button";
 import ButtonDropdown from "@/components/ui/button-dropdown";
 import TouchSlider from "@/components/ui/touchSlider";
-import FirstInfoBlock from '@/components/unnatov/first-info-block'
+// import FirstInfoBlock from '@/components/unnatov/first-info-block'
 import UniInfoBlock from '@/components/unnatov/uni-info-block'
 import { formatText } from '@/utils/text-format'
 import { formatTextWithBreaks } from '@/utils/text-format'
@@ -11,6 +11,18 @@ import SliderFullScreen from '@/components/swiper/swiper-fast'
 import FreemodeSlider from '@/components/swiper/swiper-freemode'
 
 export default function Unnatov() {
+    const interiorClient = [
+        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
+        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
+        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
+    ]
+
+    const popularLocation = [
+        { title: 'Кремль', desc: '10 минут пешком', imageUrl: '/unnatov/kremlin.jpg', imageAlt: 'Кремль' },
+        { title: 'Театр драмы', desc: '10 минут пешком', imageUrl: '/unnatov/theatre.jpg', imageAlt: 'Театр' },
+        { title: 'Вокзал', desc: '10 минут пешком', imageUrl: '/unnatov/station.jpg', imageAlt: 'Вокзал' }
+    ]
+
     const freemodeSwiper = [
         { title: 'Двор без машин', desc:'Эксклюзивная концепция', imageUrl: '/unnatov/no-car.jpg', imageAlt: 'двор_без_машин' },
         { title: 'Отделка из дерева', desc:'Экологичный материал', imageUrl: '/unnatov/finishing.jpg', imageAlt: 'отдекла_в_подъезде' },
@@ -61,39 +73,15 @@ export default function Unnatov() {
                 <Button text="Выбрать квартиру" size={'lg'} variant={'dark'} />
             </div>
             <div className="container-padding mx-auto my-15 md:my-30">
-            <FirstInfoBlock className="mt-30"/>
+            <UniInfoBlock 
+                title={formatText('Популярные места в&nbsp;пешей доступности')}
+                desc={formatText(' Жизнь здесь&nbsp;— это когда самое интересное начинается за&nbsp;порогом дома. В&nbsp;нескольких минутах ходьбы&nbsp;— уютные кофейни, модные рестораны, парки для&nbsp;прогулок и&nbsp;все ключевые точки вашего городского маршрута. Вам больше не&nbsp;нужен план «на&nbsp;вечер»&nbsp;— он складывается сам собой, стоит только выйти на&nbsp;улицу.')}
+                data={popularLocation}
+                colOff={true}
+                classNameCol="lg:grid-cols-[1.7fr_1fr_1fr]"
+                />
             </div>
             <SliderFullScreen data={fullScreenSlider} />
-            {/* <div className="relative h-[811px]"> */}
-            {/* <h2>План</h2> */}
-            {/* <SliderFullScreen >
-                    <img
-                        className=" w-full h-full object-contain object-center"
-                        src={'/unnatov/genplan.jpg'}
-                        alt={'генеральный_план_юннатов'}
-                    />
-                     <img
-                        className=" w-full h-full object-contain object-center"
-                        src={'/unnatov/monastery.jpg'}
-                        alt={'генеральный_план_юннатов'}
-                    />
-                    <img
-                        className=" w-full h-full object-contain object-center"
-                        src={'/unnatov/slider1.jpg'}
-                        alt={'test'}
-                    />
-                    <img
-                        className=" w-full h-full object-contain object-center"
-                        src={'/unnatov/slider2.jpg'}
-                        alt={'test'}
-                    />
-                                        <img
-                        className=" w-full h-full object-contain object-center"
-                        src={'/unnatov/slider3.jpg'}
-                        alt={'test'}
-                    />
-            </SliderFullScreen> */}
-            {/* </div> */}
             <div className="container-padding mx-auto my-30">
             <UniInfoBlock
                 title={formatText('Инфраструктура и&nbsp;историческое окружение')}
@@ -112,7 +100,8 @@ export default function Unnatov() {
             desc={formatText(' Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные&nbsp;переезды.В&nbsp;шаговой доступности от&nbsp;дома расположены детские&nbsp;сады, школы и&nbsp;развивающие&nbsp;центры. Это не&nbsp;только безопасность и&nbsp;экономия&nbsp;времени, но&nbsp;и&nbsp;возможность для&nbsp;ребёнка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учёбу и&nbsp;хобби.')} 
             data={freemodeSwiper} 
             slider={true}/>
-            {/* <FreemodeSlider data={freemodeSwiper}/> */}
+
+            <UniInfoBlock title={''} desc={''} data={interiorClient}/>
             </div>
         </div>
 

@@ -14,7 +14,7 @@ import { useState } from "react";
 import Card from "@/components/unnatov/ui/card";
 import CardNews from "@/components/news/card-news";
 
-const freemodeSlider = ({ data, type = "default" }) => {
+const freemodeSlider = ({ data, type = "default", horizontalCard }) => {
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const [swiperInstance, setSwiperInstance] = useState(null);
@@ -137,8 +137,6 @@ const freemodeSlider = ({ data, type = "default" }) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            
-
         </div>
     );
 };
