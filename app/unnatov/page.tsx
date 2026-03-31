@@ -11,10 +11,16 @@ import SliderFullScreen from '@/components/swiper/swiper-fast'
 import FreemodeSlider from '@/components/swiper/swiper-freemode'
 
 export default function Unnatov() {
+    const historyBuilding = [
+        {title: 'Позиция №2', desc: '27.01.2026', imageUrl: '/unnatov/2-27.01.2026.jpg', imageAlt: '2_позиция_27_января_2026'},
+        {title: 'Позиция №1', desc: '04.11.2025', imageUrl: '/unnatov/1-04.11.2025.jpg', imageAlt: '1_позиция_4_ноября_2025'},
+        {title: 'Позиция №3', desc: '27.01.2026', imageUrl: '/unnatov/3-27.01.2026.jpg', imageAlt: '3_позиция_27_января_2026'},
+    ]
+
     const interiorClient = [
-        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
-        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
-        {title: '', sqm: '', imageUrl: '/unnatov/.jpg', imageAlt: ''},
+        {title: '1-комнатная квартира Анастасии и Вадима', desc: '38 м²', imageUrl: '/unnatov/interior.jpg', imageAlt: '1-комнатная_квартира_Анастасии_и_Вадима'},
+        {title: '1-комнатная квартира Анастасии и Вадима', desc: '38 м²', imageUrl: '/unnatov/interior.jpg', imageAlt: '1-комнатная_квартира_Анастасии_и_Вадима'},
+        {title: '1-комнатная квартира Анастасии и Вадима', desc: '38 м²', imageUrl: '/unnatov/interior.jpg', imageAlt: '1-комнатная_квартира_Анастасии_и_Вадима'},
     ]
 
     const popularLocation = [
@@ -72,7 +78,7 @@ export default function Unnatov() {
                 </p>
                 <Button text="Выбрать квартиру" size={'lg'} variant={'dark'} />
             </div>
-            <div className="container-padding mx-auto my-15 md:my-30">
+            <div className="container-padding mx-auto">
             <UniInfoBlock 
                 title={formatText('Популярные места в&nbsp;пешей доступности')}
                 desc={formatText(' Жизнь здесь&nbsp;— это когда самое интересное начинается за&nbsp;порогом дома. В&nbsp;нескольких минутах ходьбы&nbsp;— уютные кофейни, модные рестораны, парки для&nbsp;прогулок и&nbsp;все ключевые точки вашего городского маршрута. Вам больше не&nbsp;нужен план «на&nbsp;вечер»&nbsp;— он складывается сам собой, стоит только выйти на&nbsp;улицу.')}
@@ -82,26 +88,39 @@ export default function Unnatov() {
                 />
             </div>
             <SliderFullScreen data={fullScreenSlider} />
-            <div className="container-padding mx-auto my-30">
+            <div className="container-padding mx-auto">
             <UniInfoBlock
                 title={formatText('Инфраструктура и&nbsp;историческое окружение')}
                 desc={formatText('Здесь гармонично соединяются дух прошлого и&nbsp;комфорт настоящего. Вы&nbsp;будете жить среди архитектурных памятников, впитывая атмосферу города, но&nbsp;при этом вам доступны все современные удобства: от&nbsp;супермаркетов и&nbsp;фитнес-центров до&nbsp;детских садов и&nbsp;клиник. Это лучшее из&nbsp;двух миров прямо за&nbsp;окном.')}
                 data={historicalLocations}
             />
-            <UniInfoBlock className="mt-30"
+            <UniInfoBlock
                 title={formatTextWithBreaks('Образование<br/> Учёба для&nbsp;детей&nbsp;— рядом')}
                 desc={formatText('Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные переезды. В&nbsp;шаговой доступности от&nbsp;дома расположены детские сады, школы и&nbsp;развивающие центры. Это не&nbsp;только безопасность и&nbsp;экономия времени, но&nbsp;и&nbsp;возможность для&nbsp;ребёнка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учёбу и&nbsp;хобби.')}
                 data={educationBlock}
             />
 
             <UniInfoBlock 
-            className="mt-30"
+            
             title={'Особенности проекта'} 
             desc={formatText(' Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные&nbsp;переезды.В&nbsp;шаговой доступности от&nbsp;дома расположены детские&nbsp;сады, школы и&nbsp;развивающие&nbsp;центры. Это не&nbsp;только безопасность и&nbsp;экономия&nbsp;времени, но&nbsp;и&nbsp;возможность для&nbsp;ребёнка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учёбу и&nbsp;хобби.')} 
             data={freemodeSwiper} 
             slider={true}/>
 
-            <UniInfoBlock title={''} desc={''} data={interiorClient}/>
+            <UniInfoBlock 
+                title={formatText('Интерьеры&nbsp;наших&nbsp;клиентов')} 
+                desc={formatText('Ваши дети смогут добираться до&nbsp;уроков, не&nbsp;тратя время на&nbsp;длинные переезды. В&nbsp;шаговой доступности от&nbsp;дома расположены детские сады, школы и&nbsp;развивающие центры. Это не&nbsp;только безопасность и&nbsp;экономия времени, но&nbsp;и&nbsp;возможность для&nbsp;ребенка больше общаться с&nbsp;друзьями во&nbsp;дворе и&nbsp;глубже погружаться в&nbsp;учебу и&nbsp;хобби.')} 
+                data={interiorClient} 
+                horizontalCard={true}
+                slider={true}
+                slidesPerView={1}
+            />
+            <div className="text-5xl text-center text-dark font-bold my-30"> ... </div>
+            <div className="my-30">
+            <h3 className="text-xl md:text-[32px] font-medium text-dark leading-[116%]">Фотоотчёт строительства</h3>
+            <FreemodeSlider data={historyBuilding}/>
+            </div>
+            {/* <UniInfoBlock title={'Фотоотчёт строительства'} desc={null} data={historyBuilding} slider={true}/> */}
             </div>
         </div>
 
