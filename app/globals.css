@@ -2,6 +2,7 @@
 
 :root {
 
+  --color-background: #FDF9F6;
   --color-accent: #F27618;
   --color-accent40: #FAD0A3;
   --color-header: #7D7A75;
@@ -11,6 +12,7 @@
   --color-dark40: #B5B2AE;
   --color-dark25: #D0CFCC;
   --color-dark15: #E3E2E1;
+  --color-dark10: #EDECEB;
 
   --color-twopart: #DEDCDC;
 }
@@ -26,6 +28,7 @@
   --color-dark40: var(--color-dark40);
   --color-dark25: var(--color-dark25);
   --color-dark15: var(--color-dark15);
+  --color-dark10: var(--color-dark10);
   --color-twopart: var(--color-twopart);
 
   --font-sans: var(--font-geist-sans);

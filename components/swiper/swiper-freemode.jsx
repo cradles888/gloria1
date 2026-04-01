@@ -117,7 +117,7 @@ const freemodeSlider = ({ data, type = "default", horizontalCard = false, slides
                 
                 breakpoints={slidesPerView ? undefined : defaultBreakpoints}
             
-                className="mySwiper rounded-4xl"
+                className="mySwiper rounded-xl"
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>

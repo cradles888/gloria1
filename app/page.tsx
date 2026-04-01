@@ -21,7 +21,7 @@ export default function Home() {
           alt={"wb-unnatov"}
         />
       </div>
-      <div className="container-padding mx-auto my-12">
+      <div className="container-padding mx-auto mt-30 mb-14">
         <h1 className="text-[32px] font-medium sm:text-4xl text-dark pb-4 inline-block border-b border-dark40 w-full">
           Новостройки{" "}
           <p className="text-accent  inline-block">
@@ -33,7 +33,7 @@ export default function Home() {
           {/* <ButtonDropdown text={'Сортировать'} iconLink={'/chevron-arrow.svg'} iconAlt={'next-to-page'} /> */}
         </div>
       </div>
-      <div className="container-padding grid mb-30 mx-auto gap-8">
+      <div className="container-padding grid  mb-30 mx-auto gap-8">
         <h2 className="text-3xl text-dark font-medium">Популярные проекты</h2>
         <CardComplex
           name={"ЖК Юннатов"}

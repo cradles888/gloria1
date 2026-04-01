@@ -15,7 +15,7 @@ const Header = () => {
                 </Link>
                 <div className='flex bg-header items-center rounded-4xl px-8 justify-between w-full py-2'>
                     <div className='flex items-center text-white gap-6'>
-                        <a className='min-w-max' href="#">Покупка квартиры</a>
+                        <a className='min-w-max' href="/apartments">Покупка квартиры</a>
                         <a className='min-w-max' href="#">О нас</a>
                         <a className='min-w-max' href="#">Новости</a>
                         <a className='min-w-max' href="#">Построенные объекты</a>
@@ -90,7 +90,7 @@ const Header = () => {
                                         Юннатов
                                     </a>
                                     <a 
-                                        href="#" 
+                                        href="/apartments" 
                                         className='py-2 border-b border-dark40'
                                         onClick={() => setIsMenuOpen(false)}
                                     >

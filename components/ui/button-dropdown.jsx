@@ -40,25 +40,114 @@ const buttonIcon = ({
     }
 
     return (
-        <div className="grid gap-4 w-70" ref={dropdownRef} onClick={openDropdownList}>
-            <button className={`flex items-center min-w-max justify-between gap-10 border border-dark40 rounded-4xl text-dark px-4 h-12 cursor-pointer`}>
-                {isPressedParam !== null ? paramSort[isPressedParam] : text}
-                <img className={`inline ${isOpenList ? 'rotate-270' : 'rotate-90'} transition duration-300 ease-in-out`} width={'24px'} src={iconLink} alt={iconAlt} />
-            </button>
-            <div className={`absolute z-10 mt-16 bg-white w-70 border border-dark40 rounded-4xl transform transition-all duration-300 ease-in-out ${isOpenList ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
-                }`
-            }>
+        <div className="relative" ref={dropdownRef}>
+    <button 
+        onClick={openDropdownList}
+        className={`flex items-center min-w-max justify-between gap-10 border border-dark40 rounded-4xl text-dark px-4 h-12 cursor-pointer`}
+    >
+        {isPressedParam !== null ? paramSort[isPressedParam] : text}
+        <img 
+            className={`inline ${isOpenList ? 'rotate-270' : 'rotate-90'} transition duration-300 ease-in-out`} 
+            width={'24px'} 
+            src={iconLink} 
+            alt={iconAlt} 
+        />
+    </button>
+    
+    {/* Десктопная версия - выпадающий список */}
+    <div className={`
+        absolute z-10 mt-4 bg-white w-70 border border-dark40 rounded-4xl 
+        transform transition-all duration-300 ease-in-out
+        hidden sm:block  shadow-lg
+        ${isOpenList ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}
+    `}>
+        {paramSort.map((text, index) => (
+            <div
+                key={index}
+                className={`
+                    flex justify-between items-center py-4 px-6 cursor-pointer
+                    ${isPressedParam === index ? 'bg-accent text-white' : 'text-dark'}
+                    ${isPressedParam === index && index === 0 ? 'rounded-t-4xl' : ''}
+                    ${isPressedParam === index && index === paramSort.length - 1 ? 'rounded-b-4xl' : ''}
+                `}
+                onClick={() => statusParam(index)}
+            >
+                <span className={isPressedParam === index ? 'text-white' : 'text-dark'}>
+                    {text}
+                </span>
+            </div>
+        ))}
+    </div>
+
+    {/* Мобильная версия - модальное окно снизу */}
+    <div className={`
+        fixed sm:hidden
+        bottom-0 left-0 right-0
+        z-50
+        transform transition-transform duration-300 ease-in-out
+        ${isOpenList ? 'translate-y-0' : 'translate-y-full'}
+    `}>
+        {/* Заголовок модального окна */}
+        <div className="bg-white rounded-t-3xl border-t border-dark20 shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b border-dark10">
+                <span className="text-lg font-medium text-dark">Сортировать по</span>
+                <button 
+                    onClick={openDropdownList}
+                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark5"
+                >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            {/* Список опций */}
+            <div className="max-h-[60vh] overflow-y-auto">
                 {paramSort.map((text, index) => (
                     <div
                         key={index}
-                        className={`flex ${isPressedParam === index ? 'bg-accent ' : ''} ${isPressedParam === index && index === 3 ? 'rounded-b-4xl bg-accent' : ''} ${isPressedParam === index && index === 0 ? 'rounded-t-4xl bg-accent text-white' : ''} justify-between items-center py-4 px-6  cursor-pointer `}
+                        className={`
+                            flex justify-between items-center 
+                            py-4 px-6 cursor-pointer
+                            transition-colors duration-200
+                            active:bg-dark10
+                            ${isPressedParam === index ? 'bg-accent text-white' : 'bg-white text-dark'}
+                            ${index !== paramSort.length - 1 ? 'border-b border-dark10' : ''}
+                        `}
                         onClick={() => statusParam(index)}
                     >
-                        <span className={`text-dark ${isPressedParam === index ? 'text-white ' : ''}`}>{text}</span>
+                        <span className={isPressedParam === index ? 'text-white font-medium' : 'text-dark'}>
+                            {text}
+                        </span>
+                        {isPressedParam === index && (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                        )}
                     </div>
                 ))}
             </div>
+            
+            {/* Кнопка отмены */}
+            <div className="p-4 border-t border-dark10">
+                <button 
+                    onClick={openDropdownList}
+                    className="w-full py-3 text-center text-dark60 hover:text-dark transition-colors"
+                >
+                    Отмена
+                </button>
+            </div>
         </div>
+    </div>
+
+    {/* Затемнение фона для мобильной версии */}
+    {isOpenList && (
+        <div 
+            className="fixed inset-0 bg-black/50 z-40 sm:hidden transition-opacity duration-300"
+            onClick={openDropdownList}
+        />
+    )}
+</div>
     );
 }
 

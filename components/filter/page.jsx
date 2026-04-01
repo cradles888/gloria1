@@ -25,7 +25,7 @@ const filter = () => {
     }
 
     return (
-        <div className='my-12 grid gap-6'>
+        <div className='mt-12 mb-6 grid gap-6'>
             <div className='grid gap-8 lg:gap-0 lg:flex items-center justify-between'>
                 <div className='flex flex-wrap gap-2 gap-y-4'>
                     <ButtonParam text={'1'} onButtonClick={handleParamClick} activeParams={stateParam} />
