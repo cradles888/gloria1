@@ -1,7 +1,7 @@
 import Filter from "@/components/filter/page";
-import Button from "@/components/ui/button";
-import ButtonDropdown from "@/components/ui/button-dropdown";
-import TouchSlider from "@/components/ui/touchSlider";
+import Button from "@/components/ui/Button";
+import ButtonDropdown from "@/components/ui/ButtonDropdown";
+import TouchSlider from "@/components/ui/TouchSlider";
 // import FirstInfoBlock from '@/components/unnatov/first-info-block'
 import UniInfoBlock from '@/components/unnatov/uni-info-block'
 import { formatText } from '@/utils/text-format'

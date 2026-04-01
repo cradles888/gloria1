@@ -1,7 +1,7 @@
 import CardWb from "@/components/card-wb";
 import Filter from "@/components/filter/page";
-import CardComplex from "@/components/ui/card-complex";
-import ButtonDropdown from '@/components/ui/button-dropdown'
+import CardComplex from "@/components/ui/CardComplex";
+import ButtonDropdown from '@/components/ui/ButtonDropdown'
 import NewsModule from "@/components/news/news-module-block/page";
 export default function Home() {
 

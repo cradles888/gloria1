@@ -1,6 +1,6 @@
 'use client'
 import { Roboto } from "next/font/google";
-import Button from '@/components/ui/button'
+import Button from '@/components/ui/Button'
 import { useState } from 'react';
 
 const Footer = () => {

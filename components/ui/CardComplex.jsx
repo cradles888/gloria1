@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/Button';
 
 const ResidentialComplex = ({ name, street, price, imageUrl, imageAlt, linkToPage }) => {
   const [isClicked, setIsClicked] = useState(false);

@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button'
+import Button from '@/components/ui/Button'
 
 const cardNews = ({date, imageUrl, imageAlt, title, desc}) => {
     const truncateText = (text, maxLength = 70) => {

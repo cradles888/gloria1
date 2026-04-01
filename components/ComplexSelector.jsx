@@ -1,5 +1,4 @@
 'use client'
-// components/complex-selector.jsx
 import { useState, useEffect, useRef } from "react";
 
 const ComplexSelector = ({ selectedComplex, onSelect, options }) => {
@@ -14,8 +13,8 @@ const ComplexSelector = ({ selectedComplex, onSelect, options }) => {
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+        return () => {document.removeEventListener('mousedown', handleClickOutside)};
+    }, [isOpenList]);
 
     const listComplex = [
         { name: 'ЖК Юннатов' },
@@ -29,10 +28,12 @@ const ComplexSelector = ({ selectedComplex, onSelect, options }) => {
         setIsOpenList(false);
     };
 
-    const toggleComplexList = () => setIsOpenList(!isOpenList);
+    const toggleComplexList = (e) => {
+        setIsOpenList(!isOpenList)
+    };
 
     return (
-        <div className="relative">
+        <div  ref={dropdownRef} className="relative">
             <button
                 onClick={toggleComplexList}
                 className="font-medium ml-2 inline-flex items-center gap-1 hover:text-dark/70 transition-colors"
@@ -49,7 +50,7 @@ const ComplexSelector = ({ selectedComplex, onSelect, options }) => {
             </button>
 
             {/* Десктопная версия - выпадающий список */}
-            <div ref={dropdownRef} className={`
+            <div className={`
                 absolute z-10 mt-4 right-1/6 -translate-x-1/2
                 bg-white w-80 border border-dark40 rounded-4xl 
                 transform transition-all duration-300 ease-in-out

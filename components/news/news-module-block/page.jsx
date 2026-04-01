@@ -1,5 +1,5 @@
 import CardNews from "@/components/news/card-news";
-import TouchSlider from "@/components/ui/touchSlider";
+import TouchSlider from "@/components/ui/TouchSlider";
 import FreemodeSlider from "@/components/swiper/swiper-freemode";
 
 const newsModule = () => {

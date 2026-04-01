@@ -8,6 +8,7 @@
   --color-header: #7D7A75;
 
   --color-dark: #463F35;
+  --color-dark80: #676159;
   --color-dark50: #9C968F;
   --color-dark40: #B5B2AE;
   --color-dark25: #D0CFCC;
@@ -24,6 +25,7 @@
   --color-accent40: var(--color-accent40);
 
   --color-dark: var(--color-dark);
+  --color-dark80: var(--color-dark80);
   --color-dark50: var(--color-dark50);
   --color-dark40: var(--color-dark40);
   --color-dark25: var(--color-dark25);
