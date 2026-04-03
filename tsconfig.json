@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/header-white-logo.jsx", "components/ui/buttontsx", "utils/text-format.js", "app/apartments/page.tsx"  ],
+, "components/header-white-logo.jsx", "components/ui/buttontsx", "utils/text-format.js", "app/apartments/page.jsx"  ],
   "exclude": ["node_modules"]
 }
